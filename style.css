@@ -1,19 +1,8 @@
-body {
-    font-family: Raleway, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
 .carousel-container {
     position: relative;
     width: 80%; /* Adjust width for responsiveness */
     max-width: 600px; /* Matches the square image size better */
-    height: auto; /* Adapts height based on image aspect ratio */
+    height: 600px; /* Ensures square dimensions for the slideshow */
     overflow: hidden; /* Ensures only one image is visible */
     border: 2px solid #ccc;
     border-radius: 10px;
@@ -22,16 +11,16 @@ body {
 }
 
 .carousel {
-    display: flex; /* Align images horizontally */
+    display: flex; /* Aligns images horizontally */
     transition: transform 0.5s ease-in-out; /* Smooth sliding effect */
+    width: 100%; /* Ensures proper alignment of images */
 }
 
 .carousel img {
     flex-shrink: 0; /* Prevents shrinking */
     width: 100%; /* Adjusts to fit container's width */
-    height: auto; /* Maintains original aspect ratio */
-    object-fit: contain; /* Ensures full image is visible without cropping */
-    max-width: 1080px; /* Prevents images from exceeding their original size */
+    height: 100%; /* Ensures square proportions */
+    object-fit: contain; /* Prevent cropping */
 }
 
 .arrow {
@@ -44,7 +33,7 @@ body {
     font-size: 2rem;
     padding: 10px;
     cursor: pointer;
-    z-index: 1;
+    z-index: 10; /* Ensures the arrows are on top of images */
     border-radius: 50%;
     transition: background 0.3s ease-in-out;
 }
