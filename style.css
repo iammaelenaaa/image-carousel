@@ -1,9 +1,20 @@
+body {
+    font-family: Raleway, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .carousel-container {
     position: relative;
-    width: 80%; /* Adjust width as needed */
-    max-width: 800px; /* Limit the width on larger screens */
-    aspect-ratio: 16 / 9; /* Dynamically set height based on width for a clean aspect ratio */
-    overflow: hidden; /* Ensure only one image is shown */
+    width: 80%; /* Adjust width for responsiveness */
+    max-width: 600px; /* Matches the square image size better */
+    height: auto; /* Adapts height based on image aspect ratio */
+    overflow: hidden; /* Ensures only one image is visible */
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -11,14 +22,41 @@
 }
 
 .carousel {
-    display: flex; /* Aligns images horizontally */
-    transition: transform 0.5s ease-in-out; /* Smooth sliding */
+    display: flex; /* Align images horizontally */
+    transition: transform 0.5s ease-in-out; /* Smooth sliding effect */
 }
 
 .carousel img {
-    flex-shrink: 0; /* Prevent shrinking */
-    width: 100%; /* Ensures the image scales to container width */
-    height: 100%; /* Ensures the image scales to container height */
-    object-fit: contain; /* Prevent cropping, adds padding where necessary */
-    background: #fff; /* Optional: Background color for empty areas */
+    flex-shrink: 0; /* Prevents shrinking */
+    width: 100%; /* Adjusts to fit container's width */
+    height: auto; /* Maintains original aspect ratio */
+    object-fit: contain; /* Ensures full image is visible without cropping */
+    max-width: 1080px; /* Prevents images from exceeding their original size */
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 50%;
+    transition: background 0.3s ease-in-out;
+}
+
+.arrow.left {
+    left: 10px; /* Positions arrow on the left */
+}
+
+.arrow.right {
+    right: 10px; /* Positions arrow on the right */
+}
+
+.arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
 }
