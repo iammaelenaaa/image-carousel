@@ -12,10 +12,12 @@ body {
 .carousel-container {
     position: relative;
     width: 80%;
+    max-height: 400px;
     overflow: hidden;
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: #fff;
 }
 
 .carousel {
@@ -25,9 +27,11 @@ body {
 }
 
 .carousel img {
-    width: 100%;
-    flex-shrink: 0;
-    object-fit: cover;
+    width: auto;
+    max-height: 400px;
+    margin: auto;
+    object-fit: contain;
+    display: block;
 }
 
 .arrow {
@@ -42,6 +46,7 @@ body {
     cursor: pointer;
     z-index: 1;
     border-radius: 50%;
+    transition: background 0.3s ease-in-out;
 }
 
 .arrow.left {
@@ -50,4 +55,8 @@ body {
 
 .arrow.right {
     right: 10px;
+}
+
+.arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
 }
