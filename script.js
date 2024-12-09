@@ -3,46 +3,44 @@ const images = document.querySelectorAll('.carousel img');
 const prevButton = document.getElementById('prev');
 const nextButton = document.getElementById('next');
 
-let currentIndex = 0;
+let currentIndex = 0; // Tracks the current image
+const totalImages = images.length;
+
+// Function to move to the next image
+function moveToNext() {
+    currentIndex = (currentIndex + 1) % totalImages; // Wrap to the first image
+    updateCarouselPosition();
+}
+
+// Function to move to the previous image
+function moveToPrev() {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages; // Wrap to the last image
+    updateCarouselPosition();
+}
+
+// Updates the position of the carousel
+function updateCarouselPosition() {
+    const containerWidth = carousel.parentElement.offsetWidth; // Width of the visible area
+    carousel.style.transform = `translateX(-${currentIndex * containerWidth}px)`; // Moves to the correct slide
+}
+
+// Event listeners for navigation buttons
+nextButton.addEventListener('click', moveToNext);
+prevButton.addEventListener('click', moveToPrev);
 
 // Automatically move to the next image every 3 seconds
-let autoSlide = setInterval(() => moveToNext(), 3000);
+let autoSlide = setInterval(moveToNext, 3000);
 
-function moveToNext() {
-    if (currentIndex < images.length - 1) {
-        currentIndex++;
-    } else {
-        currentIndex = 0; // Loop back to the first image
-    }
-    updateCarouselPosition();
-}
-
-function moveToPrev() {
-    if (currentIndex > 0) {
-        currentIndex--;
-    } else {
-        currentIndex = images.length - 1; // Loop back to the last image
-    }
-    updateCarouselPosition();
-}
-
-function updateCarouselPosition() {
-    const imageWidth = carousel.offsetWidth;
-    carousel.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
-}
-
-// Add event listeners for arrows
-nextButton.addEventListener('click', () => {
-    clearInterval(autoSlide); // Pause auto-slide when arrow is clicked
-    moveToNext();
-    autoSlide = setInterval(() => moveToNext(), 3000); // Restart auto-slide
+// Pause auto-slide on button click
+[nextButton, prevButton].forEach(button => {
+    button.addEventListener('click', () => {
+        clearInterval(autoSlide); // Stop auto-slide
+        autoSlide = setInterval(moveToNext, 3000); // Restart auto-slide
+    });
 });
 
-prevButton.addEventListener('click', () => {
-    clearInterval(autoSlide); // Pause auto-slide when arrow is clicked
-    moveToPrev();
-    autoSlide = setInterval(() => moveToNext(), 3000); // Restart auto-slide
-});
-
-// Resize handler to recalculate image width on window resize
+// Update carousel position on window resize
 window.addEventListener('resize', updateCarouselPosition);
+
+// Set initial position
+updateCarouselPosition();
