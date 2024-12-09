@@ -1,20 +1,9 @@
-body {
-    font-family: Raleway, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
 .carousel-container {
     position: relative;
-    width: 80%; /* Adjusts the slideshow width */
-    max-width: 800px; /* Keeps it visually appealing on larger screens */
-    height: 400px; /* Fixed height for consistency */
-    overflow: hidden; /* Ensures only one image is shown */
+    width: 80%; /* Adjust width as needed */
+    max-width: 800px; /* Limit the width on larger screens */
+    aspect-ratio: 16 / 9; /* Dynamically set height based on width for a clean aspect ratio */
+    overflow: hidden; /* Ensure only one image is shown */
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -23,39 +12,13 @@ body {
 
 .carousel {
     display: flex; /* Aligns images horizontally */
-    transition: transform 0.5s ease-in-out; /* Smooth sliding effect */
+    transition: transform 0.5s ease-in-out; /* Smooth sliding */
 }
 
 .carousel img {
-    width: 400px; /* Ensures each image takes up full container width */
-    height: 100%; /* Maintains consistent height */
-    object-fit: contain; /* Prevents distortion */
-    background: #fff; /* Optional: Adds a background color for empty spaces */
-}
-
-.arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1;
-    border-radius: 50%;
-    transition: background 0.3s ease-in-out;
-}
-
-.arrow.left {
-    left: 10px; /* Positions arrow to the left */
-}
-
-.arrow.right {
-    right: 10px; /* Positions arrow to the right */
-}
-
-.arrow:hover {
-    background: rgba(0, 0, 0, 0.7);
+    flex-shrink: 0; /* Prevent shrinking */
+    width: 100%; /* Ensures the image scales to container width */
+    height: 100%; /* Ensures the image scales to container height */
+    object-fit: contain; /* Prevent cropping, adds padding where necessary */
+    background: #fff; /* Optional: Background color for empty areas */
 }
