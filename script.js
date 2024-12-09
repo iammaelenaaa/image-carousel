@@ -27,7 +27,7 @@ function moveToPrev() {
 }
 
 function updateCarouselPosition() {
-    const imageWidth = carousel.clientWidth;
+    const imageWidth = carousel.offsetWidth;
     carousel.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
 }
 
