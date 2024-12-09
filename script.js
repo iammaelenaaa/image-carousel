@@ -1,11 +1,45 @@
-const carouselInner = document.querySelector('.carousel-inner');
-const images = document.querySelectorAll('.carousel-inner img');
-let currentIndex = 0;
+const carousel = document.querySelector('.carousel');
+const images = document.querySelectorAll('.carousel img');
+const prevButton = document.getElementById('prev');
+const nextButton = document.getElementById('next');
 
-function showNextImage() {
-  currentIndex = (currentIndex + 1) % images.length;
-  carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+let currentIndex = 0;
+const imageWidth = images[0].clientWidth; // Assumes all images are the same width
+
+// Automatically move to the next image every 3 seconds
+let autoSlide = setInterval(() => moveToNext(), 3000);
+
+function moveToNext() {
+    if (currentIndex < images.length - 1) {
+        currentIndex++;
+    } else {
+        currentIndex = 0; // Loop back to the first image
+    }
+    updateCarouselPosition();
 }
 
-// Automatically change the image every 3 seconds
-setInterval(showNextImage, 3000);
+function moveToPrev() {
+    if (currentIndex > 0) {
+        currentIndex--;
+    } else {
+        currentIndex = images.length - 1; // Loop back to the last image
+    }
+    updateCarouselPosition();
+}
+
+function updateCarouselPosition() {
+    carousel.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+}
+
+// Add event listeners for arrows
+nextButton.addEventListener('click', () => {
+    clearInterval(autoSlide); // Pause auto-slide when arrow is clicked
+    moveToNext();
+    autoSlide = setInterval(() => moveToNext(), 3000); // Restart auto-slide
+});
+
+prevButton.addEventListener('click', () => {
+    clearInterval(autoSlide); // Pause auto-slide when arrow is clicked
+    moveToPrev();
+    autoSlide = setInterval(() => moveToNext(), 3000); // Restart auto-slide
+});
