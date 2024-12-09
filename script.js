@@ -4,7 +4,6 @@ const prevButton = document.getElementById('prev');
 const nextButton = document.getElementById('next');
 
 let currentIndex = 0;
-const imageWidth = images[0].clientWidth; // Assumes all images are the same width
 
 // Automatically move to the next image every 3 seconds
 let autoSlide = setInterval(() => moveToNext(), 3000);
@@ -28,6 +27,7 @@ function moveToPrev() {
 }
 
 function updateCarouselPosition() {
+    const imageWidth = carousel.clientWidth;
     carousel.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
 }
 
@@ -43,3 +43,6 @@ prevButton.addEventListener('click', () => {
     moveToPrev();
     autoSlide = setInterval(() => moveToNext(), 3000); // Restart auto-slide
 });
+
+// Resize handler to recalculate image width on window resize
+window.addEventListener('resize', updateCarouselPosition);

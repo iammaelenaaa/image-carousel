@@ -12,22 +12,26 @@ body {
 .carousel-container {
     position: relative;
     width: 80%;
+    max-height: 400px;
     overflow: hidden;
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: #fff;
 }
 
 .carousel {
-    display: flex;
+    display: flex; /* Makes images line up horizontally */
     transition: transform 0.5s ease-in-out;
-    width: 100%;
+    width: max-content; /* Ensures all images are in a single row */
 }
 
 .carousel img {
-    width: 100%;
-    flex-shrink: 0;
-    object-fit: cover;
+    flex-shrink: 0; /* Prevents images from shrinking */
+    width: 100%; /* Adjusts to container's width */
+    height: auto; /* Maintains aspect ratio */
+    max-height: 400px; /* Ensures images are not too tall */
+    object-fit: contain; /* Prevents distortion of images */
 }
 
 .arrow {
@@ -42,6 +46,7 @@ body {
     cursor: pointer;
     z-index: 1;
     border-radius: 50%;
+    transition: background 0.3s ease-in-out;
 }
 
 .arrow.left {
@@ -50,4 +55,8 @@ body {
 
 .arrow.right {
     right: 10px;
+}
+
+.arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
 }
