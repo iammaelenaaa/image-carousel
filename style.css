@@ -6,15 +6,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Adjust for potential overflow */
 }
 
 .carousel-container {
     position: relative;
-    width: 80%; /* Adjust width for responsiveness */
-    max-width: 600px; /* Matches the square image size better */
-    height: 600px; /* Ensures square dimensions for the slideshow */
-    overflow: hidden; /* Ensures only one image is visible */
+    width: 90%; /* Adjust for better responsiveness on small screens */
+    max-width: 600px; /* Ensures square dimensions for the container */
+    height: 90vw; /* Responsive height to maintain square aspect ratio */
+    max-height: 600px; /* Prevents excessive height on large screens */
+    overflow: hidden;
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -25,13 +26,14 @@ body {
     display: flex; /* Aligns images horizontally */
     transition: transform 0.5s ease-in-out; /* Smooth sliding effect */
     width: 100%; /* Ensures proper alignment of images */
+    height: 100%; /* Ensures carousel fills the container */
 }
 
 .carousel img {
     flex-shrink: 0; /* Prevents shrinking */
     width: 100%; /* Adjusts to fit container's width */
     height: 100%; /* Ensures square proportions */
-    object-fit: contain; /* Prevent cropping */
+    object-fit: cover; /* Prevents blank spaces */
 }
 
 .arrow {
@@ -59,4 +61,17 @@ body {
 
 .arrow:hover {
     background: rgba(0, 0, 0, 0.7);
+}
+
+/* Additional fixes for mobile devices */
+@media (max-width: 600px) {
+    .carousel-container {
+        width: 95%; /* Utilizes more screen space on mobile */
+        height: 95vw; /* Maintains square aspect ratio */
+    }
+
+    .arrow {
+        font-size: 1.5rem; /* Scales down arrow size on smaller screens */
+        padding: 8px;
+    }
 }
