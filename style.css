@@ -12,6 +12,7 @@ body {
 .carousel-container {
     position: relative;
     width: 80%;
+    max-width: 1000px;
     max-height: 400px;
     overflow: hidden;
     border: 2px solid #ccc;
@@ -21,17 +22,16 @@ body {
 }
 
 .carousel {
-    display: flex; /* Makes images line up horizontally */
+    display: flex; /* Align images in a row */
     transition: transform 0.5s ease-in-out;
-    width: max-content; /* Ensures all images are in a single row */
 }
 
 .carousel img {
     flex-shrink: 0; /* Prevents images from shrinking */
     width: 100%; /* Adjusts to container's width */
+    max-width: 400px; /* Ensures images are proportional */
     height: auto; /* Maintains aspect ratio */
-    max-height: 400px; /* Ensures images are not too tall */
-    object-fit: contain; /* Prevents distortion of images */
+    object-fit: contain; /* Prevents distortion */
 }
 
 .arrow {
