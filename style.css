@@ -1,8 +1,8 @@
 .carousel-container {
     position: relative;
-    width: 80%; /* Adjust width for responsiveness */
+    width: 80%; /* Adjust as needed */
     max-width: 600px; /* Matches the square image size better */
-    height: 600px; /* Ensures square dimensions for the slideshow */
+    height: auto; /* Adjusts height automatically for square images */
     overflow: hidden; /* Ensures only one image is visible */
     border: 2px solid #ccc;
     border-radius: 10px;
@@ -13,39 +13,13 @@
 .carousel {
     display: flex; /* Aligns images horizontally */
     transition: transform 0.5s ease-in-out; /* Smooth sliding effect */
-    width: 100%; /* Ensures proper alignment of images */
 }
 
 .carousel img {
     flex-shrink: 0; /* Prevents shrinking */
-    width: 100%; /* Adjusts to fit container's width */
-    height: 100%; /* Ensures square proportions */
-    object-fit: contain; /* Prevent cropping */
-}
-
-.arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10; /* Ensures the arrows are on top of images */
-    border-radius: 50%;
-    transition: background 0.3s ease-in-out;
-}
-
-.arrow.left {
-    left: 10px; /* Positions arrow on the left */
-}
-
-.arrow.right {
-    right: 10px; /* Positions arrow on the right */
-}
-
-.arrow:hover {
-    background: rgba(0, 0, 0, 0.7);
+    width: 100%; /* Adjusts to fit the container's width */
+    height: auto; /* Maintains original aspect ratio */
+    object-fit: cover; /* Prevents distortion */
+    max-width: 1080px; /* Ensures images don't stretch beyond original size */
+    margin: auto; /* Centers the image vertically */
 }
