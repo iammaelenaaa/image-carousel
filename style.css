@@ -11,10 +11,10 @@ body {
 
 .carousel-container {
     position: relative;
-    width: 80%; /* Adjust width for responsiveness */
-    max-width: 600px; /* Matches the square image size better */
-    height: auto; /* Adapts height based on image aspect ratio */
-    overflow: hidden; /* Ensures only one image is visible */
+    width: 80%; /* Adjusts the slideshow width */
+    max-width: 800px; /* Keeps it visually appealing on larger screens */
+    height: 400px; /* Fixed height for consistency */
+    overflow: hidden; /* Ensures only one image is shown */
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -22,16 +22,14 @@ body {
 }
 
 .carousel {
-    display: flex; /* Align images horizontally */
+    display: flex; /* Aligns images horizontally */
     transition: transform 0.5s ease-in-out; /* Smooth sliding effect */
 }
 
 .carousel img {
-    flex-shrink: 0; /* Prevents shrinking */
-    width: 100%; /* Adjusts to fit container's width */
-    height: auto; /* Maintains original aspect ratio */
-    object-fit: contain; /* Ensures full image is visible without cropping */
-    max-width: 1080px; /* Prevents images from exceeding their original size */
+    width: 100%; /* Ensures each image takes up full container width */
+    height: 100%; /* Maintains consistent height */
+    object-fit: cover; /* Prevents distortion */
 }
 
 .arrow {
@@ -50,11 +48,11 @@ body {
 }
 
 .arrow.left {
-    left: 10px; /* Positions arrow on the left */
+    left: 10px; /* Positions arrow to the left */
 }
 
 .arrow.right {
-    right: 10px; /* Positions arrow on the right */
+    right: 10px; /* Positions arrow to the right */
 }
 
 .arrow:hover {
