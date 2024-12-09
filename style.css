@@ -27,7 +27,7 @@ body {
 }
 
 .carousel img {
-    width: 100%; /* Ensures each image takes up full container width */
+    width: 400%; /* Ensures each image takes up full container width */
     height: 100%; /* Maintains consistent height */
     object-fit: cover; /* Prevents distortion */
 }
