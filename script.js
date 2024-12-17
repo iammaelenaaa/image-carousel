@@ -5,23 +5,23 @@ const nextButton = document.getElementById('next');
 
 let currentIndex = 0; // Tracks the current image
 const totalImages = images.length;
+const imageWidth = 500; // Fixed width for the images
 
 // Function to move to the next image
 function moveToNext() {
-    currentIndex = (currentIndex + 1) % totalImages; // Wrap to the first image
+    currentIndex = (currentIndex + 1) % totalImages; // Wrap back to first image
     updateCarouselPosition();
 }
 
 // Function to move to the previous image
 function moveToPrev() {
-    currentIndex = (currentIndex - 1 + totalImages) % totalImages; // Wrap to the last image
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages; // Wrap back to last image
     updateCarouselPosition();
 }
 
-// Updates the position of the carousel
+// Update the position of the carousel
 function updateCarouselPosition() {
-    const imageWidth = 500; // Fixed image width
-    carousel.style.transform = `translateX(-${currentIndex * imageWidth}px)`; // Moves to the correct slide
+    carousel.style.transform = `translateX(-${currentIndex * imageWidth}px)`; // Adjust slide position
 }
 
 // Event listeners for navigation buttons
@@ -31,15 +31,15 @@ prevButton.addEventListener('click', moveToPrev);
 // Automatically move to the next image every 3 seconds
 let autoSlide = setInterval(moveToNext, 3000);
 
-// Pause auto-slide on button click
+// Pause auto-slide on button click and restart
 [nextButton, prevButton].forEach(button => {
     button.addEventListener('click', () => {
-        clearInterval(autoSlide); // Stop auto-slide
-        autoSlide = setInterval(moveToNext, 3000); // Restart auto-slide
+        clearInterval(autoSlide);
+        autoSlide = setInterval(moveToNext, 3000);
     });
 });
 
-// Update carousel position on window resize
+// Adjust position on window resize
 window.addEventListener('resize', updateCarouselPosition);
 
 // Set initial position
