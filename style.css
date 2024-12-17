@@ -11,8 +11,8 @@ body {
 
 .carousel img {
     flex-shrink: 0; /* Prevents shrinking */
-    max-width: 300px; /* Ensures the width does not exceed 300px */
-    max-height: 300px; /* Ensures the height does not exceed 300px */
+    max-width: 500px; /* Ensures the width does not exceed 300px */
+    max-height: 500px; /* Ensures the height does not exceed 300px */
     width: auto; /* Maintains aspect ratio */
     height: auto; /* Maintains aspect ratio */
     object-fit: cover; /* Ensures the image fits without blank spaces */
