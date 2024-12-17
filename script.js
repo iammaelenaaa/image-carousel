@@ -20,8 +20,8 @@ function moveToPrev() {
 
 // Updates the position of the carousel
 function updateCarouselPosition() {
-    const containerWidth = carousel.parentElement.offsetWidth; // Width of the visible area
-    carousel.style.transform = `translateX(-${currentIndex * containerWidth}px)`; // Moves to the correct slide
+    const imageWidth = 500; // Fixed image width
+    carousel.style.transform = `translateX(-${currentIndex * imageWidth}px)`; // Moves to the correct slide
 }
 
 // Event listeners for navigation buttons
