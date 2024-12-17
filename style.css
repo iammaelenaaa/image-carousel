@@ -12,7 +12,7 @@ body {
 .carousel-container {
     width: 100%;
     max-width: 500px; /* Adjust to fit your desired size */
-    overflow: hidden; /* Hide images that are outside the container */
+    overflow: contain; /* Hide images that are outside the container */
     position: relative; /* Positioning for arrows */
 }
 
