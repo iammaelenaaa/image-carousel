@@ -6,42 +6,35 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Adjust for potential overflow */
+    min-height: 100vh;
 }
 
 /* Container for the carousel */
 .carousel-container {
-    width: 500px; /* Match the image width */
-    overflow: hidden; /* Hide overflowing images */
-    position: relative; /* For arrow positioning */
-    border: 2px solid #fff; /* Optional: for a border around the carousel */
-    border-radius: 10px; /* Optional: rounded corners */
+    width: 500px; /* Fixed width for the visible image */
+    height: 500px; /* Fixed height for the visible image */
+    overflow: hidden; /* Hides other images */
+    position: relative; /* Positions the arrows properly */
+    border: 2px solid #fff;
+    border-radius: 10px;
 }
 
-.carousel img {
-    flex-shrink: 0; /* Prevents shrinking */
-    max-width: 500px; /* Ensures the width does not exceed 300px */
-    max-height: 500px; /* Ensures the height does not exceed 300px */
-    width: auto; /* Maintains aspect ratio */
-    height: auto; /* Maintains aspect ratio */
-    object-fit: cover; /* Ensures the image fits without blank spaces */
-    margin: auto; /* Centers the image within its container */
-}
-
+/* Carousel track (holds all images) */
 .carousel {
-    display: flex; /* Aligns images horizontally */
+    display: flex; /* Align images horizontally */
     transition: transform 0.5s ease-in-out; /* Smooth sliding effect */
-    width: 100%; /* Ensures proper alignment of images */
-    height: 100%; /* Ensures carousel fills the container */
+    width: calc(500px * 4); /* Total width = 4 images * 500px */
 }
 
+/* Individual images */
 .carousel img {
     flex-shrink: 0; /* Prevents shrinking */
-    width: 50%; /* Adjusts to fit container's width */
-    height: 50%; /* Ensures square proportions */
-    object-fit: cover; /* Prevents blank spaces */
+    width: 500px; /* Fixed width */
+    height: 500px; /* Fixed height */
+    object-fit: cover; /* Ensures the image fills without distortion */
 }
 
+/* Navigation arrows */
 .arrow {
     position: absolute;
     top: 50%;
@@ -52,32 +45,32 @@ body {
     font-size: 2rem;
     padding: 10px;
     cursor: pointer;
-    z-index: 10; /* Ensures the arrows are on top of images */
+    z-index: 10; /* Ensures arrows are above images */
     border-radius: 50%;
     transition: background 0.3s ease-in-out;
 }
 
 .arrow.left {
-    left: 10px; /* Positions arrow on the left */
+    left: 10px; /* Left arrow position */
 }
 
 .arrow.right {
-    right: 10px; /* Positions arrow on the right */
+    right: 10px; /* Right arrow position */
 }
 
 .arrow:hover {
     background: rgba(0, 0, 0, 0.7);
 }
 
-/* Additional fixes for mobile devices */
+/* Mobile responsiveness */
 @media (max-width: 600px) {
     .carousel-container {
-        width: 95%; /* Utilizes more screen space on mobile */
-        height: 95vw; /* Maintains square aspect ratio */
+        width: 100%; /* Use full width on smaller devices */
+        height: auto; /* Adjust height automatically */
     }
 
-    .arrow {
-        font-size: 1.5rem; /* Scales down arrow size on smaller screens */
-        padding: 8px;
+    .carousel img {
+        width: 100%; /* Full width for small screens */
+        height: auto; /* Maintain aspect ratio */
     }
 }
