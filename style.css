@@ -9,17 +9,14 @@ body {
     min-height: 100vh; /* Adjust for potential overflow */
 }
 
-.carousel-container {
-    position: relative;
-    width: 90%; /* Adjust for better responsiveness on small screens */
-    max-width: 600px; /* Ensures square dimensions for the container */
-    height: 90vw; /* Responsive height to maintain square aspect ratio */
-    max-height: 600px; /* Prevents excessive height on large screens */
-    overflow: hidden;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    background: #134e92;
+.carousel img {
+    flex-shrink: 0; /* Prevents shrinking */
+    max-width: 300px; /* Ensures the width does not exceed 300px */
+    max-height: 300px; /* Ensures the height does not exceed 300px */
+    width: auto; /* Maintains aspect ratio */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: cover; /* Ensures the image fits without blank spaces */
+    margin: auto; /* Centers the image within its container */
 }
 
 .carousel {
