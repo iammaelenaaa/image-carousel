@@ -6,31 +6,28 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Adjust for potential overflow */
+    min-height: 100vh;
 }
 
-.carousel img {
-    flex-shrink: 0; /* Prevents shrinking */
-    max-width: 500px; /* Ensures the width does not exceed 500px */
-    max-height: 500px; /* Ensures the height does not exceed 500px */
-    width: 100%; /* Ensures it scales properly */
-    height: auto; /* Maintains aspect ratio */
-    object-fit: cover; /* Ensures the image fits without blank spaces */
-    margin: auto; /* Centers the image within its container */
+.carousel-container {
+    width: 100%;
+    max-width: 500px; /* Adjust to fit your desired size */
+    overflow: hidden; /* Hide images that are outside the container */
+    position: relative; /* Positioning for arrows */
 }
 
 .carousel {
     display: flex; /* Aligns images horizontally */
     transition: transform 0.5s ease-in-out; /* Smooth sliding effect */
     width: 100%; /* Ensures proper alignment of images */
-    height: 100%; /* Ensures carousel fills the container */
+    height: 500px; /* Height of the container, can be adjusted */
 }
 
 .carousel img {
-    flex-shrink: 0; /* Prevents shrinking */
     width: 100%; /* Makes the image take full width of the container */
-    height: auto; /* Ensures the aspect ratio is preserved */
-    object-fit: cover; /* Prevents blank spaces */
+    height: 100%; /* Ensures image is contained within the carousel */
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+    flex-shrink: 0; /* Prevents images from shrinking */
 }
 
 .arrow {
@@ -43,38 +40,31 @@ body {
     font-size: 2rem;
     padding: 10px;
     cursor: pointer;
-    z-index: 10; /* Ensures the arrows are on top of images */
+    z-index: 10;
     border-radius: 50%;
     transition: background 0.3s ease-in-out;
 }
 
 .arrow.left {
-    left: 10px; /* Positions arrow on the left */
+    left: 10px;
 }
 
 .arrow.right {
-    right: 10px; /* Positions arrow on the right */
+    right: 10px;
 }
 
 .arrow:hover {
     background: rgba(0, 0, 0, 0.7);
 }
 
-/* Additional fixes for mobile devices */
+/* Responsive adjustments for mobile */
 @media (max-width: 600px) {
     .carousel-container {
         width: 95%; /* Utilizes more screen space on mobile */
-        height: 95vw; /* Maintains square aspect ratio */
-    }
-
-    .arrow {
-        font-size: 1.5rem; /* Scales down arrow size on smaller screens */
-        padding: 8px;
+        height: 80vw; /* Makes the height responsive based on screen size */
     }
 
     .carousel img {
-        max-width: 100%; /* Ensures image fits within the container */
-        max-height: 400px; /* Adjust to prevent overflow on smaller screens */
-        object-fit: contain; /* Ensures the entire image is visible */
+        object-fit: contain; /* Ensures the image is fully visible on small screens */
     }
 }
