@@ -9,6 +9,15 @@ body {
     min-height: 100vh; /* Adjust for potential overflow */
 }
 
+/* Container for the carousel */
+.carousel-container {
+    width: 500px; /* Match the image width */
+    overflow: hidden; /* Hide overflowing images */
+    position: relative; /* For arrow positioning */
+    border: 2px solid #fff; /* Optional: for a border around the carousel */
+    border-radius: 10px; /* Optional: rounded corners */
+}
+
 .carousel img {
     flex-shrink: 0; /* Prevents shrinking */
     max-width: 500px; /* Ensures the width does not exceed 300px */
